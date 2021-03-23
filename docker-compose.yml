@@ -1,0 +1,17 @@
+# Versão do docker compose (Já vem junto no Mac e Windows)
+version: "3.7"
+
+# Quais serviços vão rodar
+services:
+  # Nome do serviço
+  app: 
+    # Vai executar/buildar o comando igual o docker build -t ... usando o Dockerfile
+    build: .
+    # Nome do container
+    container_name: rentx
+    # Define o mapeamento das portas
+    ports:
+      - 3333:3333
+    # Copia os arquvos da raiz . para a o diretório -> /usr/app
+    volumes:
+      - .:/usr/app
