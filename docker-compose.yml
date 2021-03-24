@@ -4,6 +4,25 @@ version: "3.7"
 # Quais serviços vão rodar
 services:
   # Nome do serviço
+  database_ignite: 
+    # Imagem que vai ser utilizada
+    image: postgres
+    # Nome do container
+    container_name: database_ignite
+    # Restarta sempre o container quando ele parar
+    restart: always
+    # Define a porta do serviço e reflexo da porta no hos
+    ports:
+      - 5432:5432
+    # Define as variáveis ambientes da imagem
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=ignite
+      - POSTGRES_DB=rentx
+    # Define o volume no qual vai guardar os dados
+    volumes:
+      - pgdata:/data/postgres
+  # Nome do serviço
   app: 
     # Vai executar/buildar o comando igual o docker build -t ... usando o Dockerfile
     build: .
@@ -15,3 +34,8 @@ services:
     # Copia os arquvos da raiz . para a o diretório -> /usr/app
     volumes:
       - .:/usr/app
+
+
+volumes: 
+  pgdata:
+    driver: local
