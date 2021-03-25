@@ -2,7 +2,6 @@ import { compare } from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { inject, injectable } from 'tsyringe';
 
-import { User } from '../../entities/User';
 import { IUsersRepository } from '../../repositories/IUsersRepository';
 
 interface IRequest {
