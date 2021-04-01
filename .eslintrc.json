@@ -57,7 +57,7 @@
                 "newlinesBetween": "always",
                 "groups": [
                     "module",
-                    "/^@shared/",
+                    "/^@/",
                     [
                         "parent",
                         "sibling",
