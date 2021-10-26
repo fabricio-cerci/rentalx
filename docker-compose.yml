@@ -31,10 +31,15 @@ services:
     # Define o mapeamento das portas
     ports:
       - 3333:3333
+    # Linka o serviço com o outro do banco
+    links:
+     - database_ignite
+    # Faz com que o serviço dependa de outro serviço
+    depends_on:
+     - database_ignite
     # Copia os arquvos da raiz . para a o diretório -> /usr/app
     volumes:
       - .:/usr/app
-
 
 volumes: 
   pgdata:
