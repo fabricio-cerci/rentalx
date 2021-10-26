@@ -24,7 +24,7 @@ class Car {
   @Column()
   daily_rate: number;
 
-  @Column()
+  @Column('boolean')
   available = true;
 
   @Column()
