@@ -7,7 +7,7 @@ import { CreateCarSpecificationController } from '@modules/cars/useCases/createC
 import { ListAvailableCarsController } from '@modules/cars/useCases/listCars/ListAvailableCarsController';
 import { UploadCarImagesController } from '@modules/cars/useCases/uploadImage/UploadCarImagesController';
 import { ensureAdmin } from '@shared/infra/http/middlewares/ensureAdmin';
-import { ensureAutheticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
+import { ensureAuthenticated } from '@shared/infra/http/middlewares/ensureAuthenticated';
 
 const carsRoutes = Router();
 
@@ -22,21 +22,21 @@ carsRoutes.get('/available', listAvailableCarsController.handle);
 
 carsRoutes.post(
   '/',
-  ensureAutheticated,
+  ensureAuthenticated,
   ensureAdmin,
   createCarController.handle,
 );
 
 carsRoutes.post(
   '/specifications/:id',
-  ensureAutheticated,
+  ensureAuthenticated,
   ensureAdmin,
   createCarSpecificationController.handle,
 );
 
 carsRoutes.post(
   '/images/:id',
-  ensureAutheticated,
+  ensureAuthenticated,
   ensureAdmin,
   upload.array('images'),
   uploadCarImagesController.handle,
