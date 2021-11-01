@@ -33,10 +33,7 @@ class DevolutionRentalUseCase {
     // Verificar o tempo de aluguel
     const dateNow = this.dateProvider.dateNow();
 
-    let daily = this.dateProvider.compareInDays(
-      rental.start_date,
-      this.dateProvider.dateNow(),
-    );
+    let daily = this.dateProvider.compareInDays(rental.start_date, dateNow);
 
     if (daily <= 0) {
       daily = minimumDaily;
