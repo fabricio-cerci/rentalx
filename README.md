@@ -67,3 +67,11 @@ Caso o horário de devolução seja superior ao horário previsto de entrega, de
 multa proporcional aos dias de atraso.
 Caso haja multa, deverá ser somado ao total do aluguel.
 O usuário deve estar logado na aplicação.
+
+# Listagem de alugueis para o usuário
+
+**RF**
+Deve ser possível realizar a busca de todos os alugueis para o usuário.
+
+**RN**
+O usuário deve estar logado na aplicação.
