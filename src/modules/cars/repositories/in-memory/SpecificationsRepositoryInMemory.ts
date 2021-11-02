@@ -5,7 +5,7 @@ import {
   ISpecificationsRepository,
 } from '../ISpecificationsRepository';
 
-class SpecificiationsRepositoryInMemory implements ISpecificationsRepository {
+class SpecificationsRepositoryInMemory implements ISpecificationsRepository {
   private specifications: Specification[] = [];
 
   async create({
@@ -38,4 +38,4 @@ class SpecificiationsRepositoryInMemory implements ISpecificationsRepository {
   }
 }
 
-export { SpecificiationsRepositoryInMemory };
+export { SpecificationsRepositoryInMemory };
