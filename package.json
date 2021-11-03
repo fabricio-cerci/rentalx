@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "aws-sdk": "^2.1020.0",
     "bcryptjs": "^2.4.3",
     "csv-parse": "^4.15.3",
     "dayjs": "^1.10.7",
@@ -17,9 +18,9 @@
     "reflect-metadata": "^0.1.13",
     "supertest": "^6.1.6",
     "swagger-ui-express": "^4.1.6",
+    "ts-jest": "^26.5.4",
     "tsyringe": "^4.5.0",
     "typeorm": "^0.2.31",
-    "ts-jest": "^26.5.4",
     "uuid": "^8.3.2"
   },
   "scripts": {
