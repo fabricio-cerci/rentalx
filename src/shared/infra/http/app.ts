@@ -21,6 +21,8 @@ import { router } from './routes';
 createConnection();
 const app = express();
 
+app.use(rateLimiter);
+
 Sentry.init({
   dsn: process.env.SENTRY_DSN,
   integrations: [
@@ -30,12 +32,10 @@ Sentry.init({
   tracesSampleRate: 1.0,
 });
 
-app.use(rateLimiter);
-
-app.use(express.json());
-
 app.use(Sentry.Handlers.requestHandler());
 app.use(Sentry.Handlers.tracingHandler());
+
+app.use(express.json());
 
 app.use('/avatar', express.static(`${upload.tmpFolder}/avatar`));
 app.use('/cars', express.static(`${upload.tmpFolder}/cars`));
@@ -45,16 +45,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 app.use(cors());
 app.use(router);
 
-app.use(
-  Sentry.Handlers.errorHandler({
-    shouldHandleError(error) {
-      if (error.status === 429 || error.status === 500) {
-        return true;
-      }
-      return false;
-    },
-  }),
-);
+app.use(Sentry.Handlers.errorHandler());
 
 app.use(
   (err: Error, request: Request, response: Response, next: NextFunction) => {
