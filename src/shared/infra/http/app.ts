@@ -3,6 +3,7 @@ import 'dotenv/config';
 
 import '@shared/container';
 
+import cors from 'cors';
 import express, { NextFunction, Request, Response } from 'express';
 import 'express-async-errors';
 import swaggerUi from 'swagger-ui-express';
@@ -24,6 +25,7 @@ app.use('/cars', express.static(`${upload.tmpFolder}/cars`));
 
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerFile));
 
+app.use(cors());
 app.use(router);
 
 app.use(
